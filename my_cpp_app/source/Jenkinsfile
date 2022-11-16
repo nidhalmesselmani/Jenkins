@@ -37,7 +37,9 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                  ./my_cpp_app/Build/HelloAppBinary
+                  cd my_cpp_app/Build
+                  rm -rf *
+                  ./HelloAppBinary
                 '''
             }
         }
