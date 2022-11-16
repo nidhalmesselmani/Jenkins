@@ -34,3 +34,6 @@
 # other generated files
 tasks.json
 settings.json
+*build*
+*.vscode*
+*.vs
