@@ -1,0 +1,33 @@
+pipeline {
+    agent { 
+        node {
+            label 'docker-agent-cpp'
+            }
+      }
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building.."
+                sh '''
+                  g++ -o Test main.cpp
+                '''
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "Testing.."
+                sh '''
+                  ./Test
+                '''
+            }
+        }
+        stage('Deliver') {
+            steps {
+                echo 'Deliver....'
+                sh '''
+
+                '''
+            }
+        }
+    }
+}
