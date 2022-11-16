@@ -5,11 +5,31 @@ pipeline {
             }
       }
     stages {
+        stage('Create') {
+            steps {
+                echo "Creating.."
+                sh '''
+                  if [ ! -d "my_cpp_app/build" ]; then
+                    mkdir my_cpp_app/build
+                  fi                
+                '''
+            }
+        }
+        stage('Generate') {
+            steps {
+                echo "Generating.."
+                sh '''
+                  cd my_cpp_app/build
+                  cmake ../source/ 
+                '''
+            }
+        }
         stage('Build') {
             steps {
                 echo "Building.."
                 sh '''
-                  g++ -g -o my_cpp_app/Test my_cpp_app/main.cpp
+                  cd my_cpp_app/build
+                  make
                 '''
             }
         }
@@ -17,7 +37,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                  ./my_cpp_app/Test
+                  ./my_cpp_app/Build/HelloAppBinary
                 '''
             }
         }
