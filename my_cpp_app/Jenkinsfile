@@ -9,7 +9,7 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                  g++ -o my_cpp_app/Test my_cpp_app/main.cpp
+                  g++ -g -o my_cpp_app/Test my_cpp_app/main.cpp
                 '''
             }
         }
