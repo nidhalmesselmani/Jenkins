@@ -38,16 +38,26 @@ pipeline {
                 echo "Testing.."
                 sh '''
                   cd my_cpp_app/Build
-                  rm -rf *
+
                   ./HelloAppBinary
                 '''
             }
         }
+
         stage('Deliver') {
             steps {
                 echo 'Deliver....'
                 sh '''
 
+                '''
+            }
+        }
+        stage('Cleaning'){
+            steps {
+                echo "Cleaning.."
+                sh '''
+                  cd my_cpp_app/Build
+                  rm -rf *
                 '''
             }
         }
