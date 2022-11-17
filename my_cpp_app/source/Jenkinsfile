@@ -33,12 +33,19 @@ pipeline {
                 '''
             }
         }
-        stage('Test') {
+        stage('Run Unit Tests') {
             steps {
-                echo "Testing.."
+                echo "Running Unit Tests.."
                 sh '''
                   cd my_cpp_app/build
                   ctest
+                '''
+            }
+        }
+        stage('Test the application') {
+            steps {
+                echo "Testing.."
+                sh '''
                   ./HelloAppBinary
                 '''
             }
