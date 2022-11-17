@@ -20,7 +20,7 @@ pipeline {
                 echo "Generating.."
                 sh '''
                   cd my_cpp_app/build
-                  cmake -G"Unix Makefiles" -D CMAKE_CXX_COMPILER=g++ ../source/ 
+                  cmake -G"Unix Makefiles" -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-copy" -D CMAKE_CXX_COMPILER=g++ ../source/ 
                 '''
             }
         }
