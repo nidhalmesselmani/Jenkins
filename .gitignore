@@ -34,5 +34,5 @@
 # other generated files
 tasks.json
 *build*
-*.vscode*
+*.vscode/c_cpp_properties.json*
 *.vs
