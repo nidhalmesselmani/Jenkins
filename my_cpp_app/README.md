@@ -6,6 +6,10 @@ mingw32-make.exe
 make
 # Generic build
 cmake --build .
+# Build specific target explicity
+cmake --build . --target logger
+cmake --build . --target operations
+cmake --build . --target HelloAppBinary
 # Gather information about the system running Cmake
 cmake --system-information info.txt
 # Jenkins
