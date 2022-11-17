@@ -60,14 +60,11 @@ pipeline {
                 '''
             }
         }
-        stage('Cleaning'){
-            steps {
-                echo "Cleaning.."
-                sh '''
-                  cd my_cpp_app/build
-                  rm -rf *
-                '''
-            }
-        }
     }
+ /*** workspace clean up*/
+  post {
+    always {
+      cleanWs()
+    }
+  }      
 }
