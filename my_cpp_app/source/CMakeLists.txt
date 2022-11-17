@@ -11,6 +11,7 @@ Project(HelloApp
 # List your sources
 add_executable(HelloAppBinary main.cpp 
                src/dog.cpp 
+               src/log.cpp
                src/operations.cpp)
 
 target_compile_features(HelloAppBinary PRIVATE cxx_std_20)
