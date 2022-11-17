@@ -6,4 +6,6 @@ mingw32-make.exe
 make
 # Generic build
 cmake --build .
+# Gather information about the system running Cmake
+cmake --system-information info.txt
 # Jenkins

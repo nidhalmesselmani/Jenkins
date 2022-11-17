@@ -20,7 +20,7 @@ pipeline {
                 echo "Generating.."
                 sh '''
                   cd my_cpp_app/build
-                  cmake ../source/ 
+                  cmake -G"Unix Makefiles" -D CMAKE_CXX_COMPILER=g++ ../source/ 
                 '''
             }
         }
