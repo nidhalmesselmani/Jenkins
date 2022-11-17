@@ -46,6 +46,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
+                  cd my_cpp_app/build
                   ./HelloAppBinary
                 '''
             }
