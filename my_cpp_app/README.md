@@ -14,4 +14,14 @@ cmake --build . --target operations
 cmake --build . --target HelloAppBinary
 # Gather information about the system running Cmake
 cmake --system-information info.txt
+
+# GTEST ASSERTS
+EXPECT_EQ(,) EXPECT_NE(,) EXPECT_LT(,) EXPECT_LE(,) EXPECT_GT(,) EXPECT_GE(,)
+
+ASSERT_EQ(,) ASSERT_NE(,) ASSERT_LT(,) ASSERT_LE(,) ASSERT_GT(,) ASSERT_GE(,)
+
+EXPECT_TRUE( == ) EXPECT_FALSE( == ) 
+
+ASSERT_TRUE( == ) ASSERT_FALSE( == )
+
 # Jenkins
