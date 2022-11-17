@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 
 set(CXX_STANDARD_REQUIRED ON) # Make C++20 a hard requirement
-set(CMAKE_CXX_STANDARD 20) # Default C++ standard for targets
+set(CMAKE_CXX_STANDARD 11) # Default C++ standard for targets
 set(CMAKE_POSITION_INDEPENDENT_CODE ON) # for libraries mixed/linked together to executables
 
 
