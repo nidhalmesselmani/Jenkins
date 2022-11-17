@@ -2,7 +2,6 @@
 #include <iostream>
 
 void log_data(const char* message, LogType lt){
-    auto value  = ((10 <=> 20) > 0);
 
     switch (lt)
     {
