@@ -33,6 +33,6 @@
 
 # other generated files
 tasks.json
-*build*
+*build
 *.vscode/c_cpp_properties.json*
 *.vs
