@@ -38,6 +38,7 @@ pipeline {
                 echo "Testing.."
                 sh '''
                   cd my_cpp_app/build
+                  ctest
                   ./HelloAppBinary
                 '''
             }
