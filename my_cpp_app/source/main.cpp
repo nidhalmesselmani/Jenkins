@@ -10,7 +10,7 @@ int main(){
     Dog dog("Rex");
     dog.print_info();
 
-    log_data("Hello there",LogType::FATAL_ERROR);
+    log_data("Hello there ",LogType::MESSAGE);
 
     return 0;
 }
