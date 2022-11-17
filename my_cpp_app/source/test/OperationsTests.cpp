@@ -3,6 +3,6 @@
 
 TEST(TestName, Subtest_1)
 {
-    EXPECT_EQ(1,2);
+    EXPECT_EQ(2,2);
     std::cout << "After assertion" << std::endl;
 }
