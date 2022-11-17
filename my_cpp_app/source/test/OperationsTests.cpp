@@ -1,7 +1,7 @@
 #include<gtest/gtest.h>
 
 int MAC(int x, int y, int& sum){
-    sum+= x * y - 1;
+    sum+= x * y;
     return sum; 
 }
 
