@@ -1,7 +1,80 @@
 #include<iostream>
 #include<gtest/gtest.h>
+#include<gmock/gmock.h>
 #include<vector>
 
+// interface
+class DataBaseConnect {
+public:
+    virtual bool login(std::string username, std::string password){ return true; }
+    virtual bool login2(std::string username, std::string password){ return true; }
+    virtual bool logout(std::string username){ return true; }
+    virtual int fetchRecord() { return -1; }
+};
+
+class MockDB : public DataBaseConnect{
+
+public:
+    MOCK_METHOD0(fetchRecord, int());
+    MOCK_METHOD1(logout, bool(std::string username));
+    MOCK_METHOD2(login, bool(std::string username, std::string passowrd));
+    MOCK_METHOD2(login2, bool(std::string username, std::string passowrd));
+
+};
+
+// componenet which gonna use DataBaseConnect interface
+class myDatabase {
+    DataBaseConnect & dbC;
+public:
+    myDatabase(DataBaseConnect & _dbC) : dbC(_dbC) {}
+    int Init(std::string username, std::string password) {
+        int rvalue = rand() %2;
+        if ( rvalue == 0) { 
+        if (dbC.login(username, password) != true){
+             if (dbC.login(username, password) != true)
+                 std::cout << "DB FAILURE second time" << std::endl; return -1;
+
+        }else{
+             std::cout << "DB SUCCCES" << std::endl; return 1;
+        }
+        }else {
+            return dbC.login2(username, password);
+        }
+    }
+};
+
+TEST(MyDBTest, LogingTest){
+    // Arrange
+    MockDB mdb;
+    myDatabase db(mdb);
+    // EXPECT_CALL(mdb, login("Terminator", "Im Back")).Times(testing::AtLeast(1)).WillOnce(testing::Return(true));
+    // we don't bother what is the parameter
+    // EXPECT_CALL(mdb, login(testing::_,testing::_)).Times(testing::AtLeast(1)).WillOnce(testing::Return(true));
+    // this call need to be executed but if executed it will return true
+    ON_CALL(mdb, login(testing::_,testing::_)).WillByDefault(testing::Return(true));
+    ON_CALL(mdb, login2(testing::_,testing::_)).WillByDefault(testing::Return(true));
+    // Act
+    int retValue = db.Init("Terminatorsss", "I'll be Back");
+
+    // ASSERT
+    EXPECT_EQ(retValue, 1);
+}
+/*
+TEST(MyDBTest, LoginFailure){
+    // Arrange
+    MockDB mdb;
+    myDatabase db(mdb);
+    // EXPECT_CALL(mdb, login("Terminator", "Im Back")).Times(testing::AtLeast(1)).WillOnce(testing::Return(true));
+    // we don't bother what is the parameter
+    EXPECT_CALL(mdb, login(testing::_,testing::_)).Times(testing::AtLeast(2)).WillRepeatedly(testing::Return(false));
+    // Act
+    int retValue = db.Init("Terminatorsss", "I'll be Back");
+
+    // ASSERT
+    EXPECT_EQ(retValue, -1);
+}
+*/
+/*
 class Stack {
     std::vector<int> vstack = {};
 public:
@@ -80,3 +153,4 @@ TEST_F(MyClassTest, increment_by_10){
     // ASSERT
     ASSERT_EQ(mc->GetValue(), 110);
 }
+*/
