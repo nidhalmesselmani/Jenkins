@@ -3,10 +3,9 @@
 #include<gmock/gmock.h>
 #include<vector>
 
-// interface
 class DataBaseConnect {
 public:
-    virtual bool login(std::string username, std::string password){ return true; }
+    virtual bool login(std::string username, std::string password){ std::cout << "Original Login...\n" ; return true; }
     virtual bool login2(std::string username, std::string password){ return true; }
     virtual bool logout(std::string username){ return true; }
     virtual int fetchRecord() { return -1; }
@@ -28,31 +27,67 @@ class myDatabase {
 public:
     myDatabase(DataBaseConnect & _dbC) : dbC(_dbC) {}
     int Init(std::string username, std::string password) {
-        int rvalue = rand() %2;
-        if ( rvalue == 0) { 
+       /* int rvalue = rand() %2;
+        if ( rvalue == 0) {*/ 
         if (dbC.login(username, password) != true){
-             if (dbC.login(username, password) != true)
-                 std::cout << "DB FAILURE second time" << std::endl; return -1;
+             std::cout << "DB FAILURE" << std::endl; return -1;
+        /*    if (dbC.login(username, password) != true)
+                 std::cout << "DB FAILURE second time" << std::endl; return -1;*/
 
         }else{
              std::cout << "DB SUCCCES" << std::endl; return 1;
         }
-        }else {
+       /* }else {
             return dbC.login2(username, password);
-        }
+        }*/
     }
 };
 
+struct testABC {
+    void dummyLogin(std::string a, std::string b){
+        std::cout << "Dummy Login gets called\n";
+        return;
+    }
+};
+bool dummyFn(){
+        std::cout << "Global Function Called \n";
+        return true;
+    }
 TEST(MyDBTest, LogingTest){
     // Arrange
     MockDB mdb;
     myDatabase db(mdb);
+    DataBaseConnect dbTest;
+    testABC testABC;
     // EXPECT_CALL(mdb, login("Terminator", "Im Back")).Times(testing::AtLeast(1)).WillOnce(testing::Return(true));
     // we don't bother what is the parameter
-    // EXPECT_CALL(mdb, login(testing::_,testing::_)).Times(testing::AtLeast(1)).WillOnce(testing::Return(true));
+    //EXPECT_CALL(mdb, login(testing::_,testing::_)).Times(testing::AtLeast(1)).WillOnce(testing::Return(true));
+    // call the orignal implementation
+    //EXPECT_CALL(mdb, login(testing::_,testing::_)).Times(testing::AtLeast(1)).WillOnce(testing::Invoke(&dbTest, &DataBaseConnect::login));
+    // invoke function inside struct
+    /*EXPECT_CALL(mdb, login(testing::_,testing::_))
+    .Times(testing::AtLeast(1))
+    .WillOnce(testing::Invoke(&testABC, &testABC::dummyLogin));*/
+    // setting default actions
+    /*ON_CALL(mdb, login(testing::_,testing::_)).WillByDefault(testing::Invoke(&testABC, &testABC::dummyLogin));
+    
+    EXPECT_CALL(mdb, login(testing::_,testing::_))
+    .Times(testing::AtLeast(1))
+    .WillOnce(testing::DoDefault());*/
+    // Calling multiple actions
+    EXPECT_CALL(mdb, login(testing::_,testing::_))
+    .Times(testing::AtLeast(1))
+    .WillOnce(testing::DoAll(testing::Invoke(&testABC, &testABC::dummyLogin),
+    testing::Invoke(&testABC, &testABC::dummyLogin),
+    testing::Return(true)));
+    // Calling Global function it has to be without any argument if you want to call a global function
+    /*EXPECT_CALL(mdb, login(testing::_,testing::_))
+    .Times(testing::AtLeast(1))
+    .WillOnce(testing::InvokeWithoutArgs(dummyFn));*/
     // this call need to be executed but if executed it will return true
-    ON_CALL(mdb, login(testing::_,testing::_)).WillByDefault(testing::Return(true));
-    ON_CALL(mdb, login2(testing::_,testing::_)).WillByDefault(testing::Return(true));
+    // this call need to be executed but if executed it will return true
+    // ON_CALL(mdb, login(testing::_,testing::_)).WillByDefault(testing::Return(true));
+   // ON_CALL(mdb, login2(testing::_,testing::_)).WillByDefault(testing::Return(true));
     // Act
     int retValue = db.Init("Terminatorsss", "I'll be Back");
 
