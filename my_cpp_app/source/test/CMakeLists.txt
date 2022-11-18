@@ -10,3 +10,6 @@ add_test(
     NAME ${This}
     COMMAND ${This}
 )
+
+add_executable(Test Tests.cpp)
+target_link_libraries(Test PUBLIC gtest_main gmock_main)
