@@ -17,9 +17,6 @@ target_include_directories(operations PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 add_library(logger STATIC logger/src/log.cpp)
 target_include_directories(logger PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/logger/include)
 
-add_library(exampletests STATIC src/exampletests.cpp)
-target_include_directories(exampletests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
 # GLOBING
 #file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
 #add_executable(HelloAppBinary main.cpp ${SOURCE_FILES})
@@ -30,7 +27,7 @@ add_executable(HelloAppBinary main.cpp
 
 #target_compile_features(HelloAppBinary PRIVATE cxx_std_20)
 target_include_directories(HelloAppBinary PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_link_libraries(HelloAppBinary PUBLIC operations logger exampletests)
+target_link_libraries(HelloAppBinary PUBLIC operations logger)
 
 # let CMAKE know we are Unit Tests
 enable_testing()

@@ -12,7 +12,7 @@ add_test(
 )
 
 add_executable(Test Tests.cpp)
-target_link_libraries(Test PUBLIC gtest_main gmock_main exampletests)
+target_link_libraries(Test PUBLIC gtest_main gmock_main)
 
 add_test(
     NAME Test

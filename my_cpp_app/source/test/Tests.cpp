@@ -3,5 +3,5 @@
 
 TEST(Tests,SubTest1){
     std::cout << "this is a test";
-    ASSERT_EQ(1,1);
+    ASSERT_EQ(1,2);
 }
