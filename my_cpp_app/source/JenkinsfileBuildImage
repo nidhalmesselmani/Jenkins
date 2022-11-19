@@ -5,7 +5,7 @@ pipeline {
               steps{
                   script{
                     echo "Build the image"
-                    sh 'ls /certs'
+                    sh 'ls /certs/client'
 
                   }
               }
