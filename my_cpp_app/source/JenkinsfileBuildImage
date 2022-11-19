@@ -8,7 +8,7 @@ pipeline {
               steps{
                   script{
                     dir('my_cpp_app/source/') {
-                    dockerImage = docker.build "nidhamesselmani/my_docker_repo"
+                      dockerImage = docker.build "nidhamesselmani/my_docker_repo"
                     }
                   }
               }
