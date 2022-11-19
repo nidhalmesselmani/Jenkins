@@ -10,7 +10,7 @@ pipeline {
                 echo "Creating.."
                 sh '''
                   echo "hello hihi" > ttest.txt
-                  scp ttest.txt ce2490e50333:/var/jenkins_home/workspace/temp
+                  scp ttest.txt jenkins-blueocean:/var/jenkins_home/workspace/temp
                   fi                
                 '''
             }
