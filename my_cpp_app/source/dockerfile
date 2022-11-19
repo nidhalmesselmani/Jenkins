@@ -1,3 +1,3 @@
 FROM gcc:latest
 
-RUN if [[ -d "build" ]] ; then mkdir build;
+RUN if [[ ! -d "build" ]] then mkdir build; fi
