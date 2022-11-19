@@ -7,7 +7,7 @@ pipeline {
                     echo "Build the image"
                     sh '''
                     sleep 3
-                    docker --tls --tlscacert=/etc/ssl/certs/ca-certificates.crt -H 127.0.0.1:2376 ps
+                    openssl 
                     '''
 
                   }
