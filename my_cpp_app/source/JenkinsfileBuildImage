@@ -5,8 +5,8 @@ pipeline {
               steps{
                   script{
                     echo "Build the image"
-                    sh 'cd my_cpp_app/source'
-                    dockerImage = docker.build "nidhamesselmani/my_docker_repo"
+                    sh 'docker ps'
+
                   }
               }
           }
