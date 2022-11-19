@@ -79,7 +79,7 @@ TEST(MyDBTest, LogingTest){
     .Times(testing::AtLeast(1))
     .WillOnce(testing::DoAll(testing::Invoke(&testABC, &testABC::dummyLogin),
     testing::Invoke(&testABC, &testABC::dummyLogin),
-    testing::Return(false)));
+    testing::Return(true)));
     // Calling Global function it has to be without any argument if you want to call a global function
     /*EXPECT_CALL(mdb, login(testing::_,testing::_))
     .Times(testing::AtLeast(1))

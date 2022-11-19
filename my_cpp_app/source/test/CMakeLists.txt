@@ -11,8 +11,12 @@ add_test(
     COMMAND ${This}
 )
 
+# example library
+add_library(sum_integers ../src/sum_integers.cpp)
+
+
 add_executable(Test Tests.cpp)
-target_link_libraries(Test PUBLIC gtest_main gmock_main)
+target_link_libraries(Test PUBLIC gtest_main gmock_main sum_integers)
 
 add_test(
     NAME Test
