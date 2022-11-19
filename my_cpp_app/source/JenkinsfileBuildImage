@@ -6,8 +6,8 @@ pipeline {
                   script{
                     echo "Build the image"
                     sh '''
-                    sleep 30
-                       docker info
+                  
+                       docker login
 
 
 
