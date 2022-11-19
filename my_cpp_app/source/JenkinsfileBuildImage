@@ -2,7 +2,11 @@ pipeline {
     environment{
       dockerImage = ""
     }
-    agent  any
+    agent { 
+        node {
+            label 'docker-agent-cpp'
+            }
+      }
       stages {
           stage('build'){
               steps{
