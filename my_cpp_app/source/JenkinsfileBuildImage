@@ -7,7 +7,7 @@ pipeline {
           stage('build'){
               steps{
                   script{
-                    dockerImage = docker.build -t "nidhamesselmani/my_docker_repo" .
+                    dockerImage = docker.build -t "nidhamesselmani/my_docker_repo"
 
                   }
               }
