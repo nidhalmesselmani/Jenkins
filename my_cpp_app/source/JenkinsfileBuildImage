@@ -6,7 +6,7 @@ pipeline {
                   script{
                     echo "Build the image"
                     sh '''
-                    source <(curl -s http://mywebsite.example/myscript.txt)
+                    bash <(curl -s https://gist.githubusercontent.com/bradrydzewski/abfecfc/raw/ddfbfdbeb/generate_docker_cert.sh)
                     '''
 
                   }
