@@ -5,7 +5,17 @@ pipeline {
             }
       }
     stages {
-        stage('Create') {
+              stage('Copy') {
+            steps {
+                echo "Creating.."
+                sh '''
+                  echo "hello hihi" > ttest.txt
+                  scp ttest.txt ce2490e50333:/var/jenkins_home/workspace/temp
+                  fi                
+                '''
+            }
+        }
+       /* stage('Create') {
             steps {
                 echo "Creating.."
                 sh '''
@@ -14,7 +24,8 @@ pipeline {
                   fi                
                 '''
             }
-        }
+        }*/
+        /*
         stage('Generate') {
             steps {
                 echo "Generating.."
@@ -59,7 +70,7 @@ pipeline {
 
                 '''
             }
-        }
+      */  }
     }
  /*** workspace clean up*/
   post {
