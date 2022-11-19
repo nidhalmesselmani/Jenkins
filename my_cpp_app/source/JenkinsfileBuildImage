@@ -6,9 +6,9 @@ pipeline {
                   script{
                     echo "Build the image"
                     sh '''
-                    cd /certs/client/
-                    ls -ltr
-                    curl  "https://gist.githubusercontent.com/bradrydzewski/a6090115b3fecfc25280/raw/1867166dd758f5b191f57d4452be238053051b79/generate_docker_cert.sh" -o test.sh
+                     ls "/var/lib/docker/volumes/jenkins-docker-certs/_data"
+                    #ls -ltr
+                    #curl  "https://gist.githubusercontent.com/bradrydzewski/a6090115b3fecfc25280/raw/1867166dd758f5b191f57d4452be238053051b79/generate_docker_cert.sh" -o test.sh
                     ls /certs/client/
                     '''
 
