@@ -6,7 +6,9 @@ pipeline {
                   script{
                     echo "Build the image"
                     sh '''
-                  
+                     ls
+                     cd my_cpp_app/source/
+                     ls
                      docker
 
 
