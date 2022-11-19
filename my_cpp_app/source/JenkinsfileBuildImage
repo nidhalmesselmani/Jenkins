@@ -1,18 +1,13 @@
 pipeline {
+    environment{
+      dockerImage = ""
+    }
     agent  any
       stages {
           stage('build'){
               steps{
                   script{
-                    echo "Build the image"
-                    sh '''
-                     ls
-                     cd my_cpp_app/source/
-                     ls
-                     docker
-
-
-                    '''
+                    dockerImage = docker.build nidhamesselmani/my_docker_repo
 
                   }
               }
