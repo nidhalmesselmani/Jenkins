@@ -1,18 +1,34 @@
-#!groovy
-
 pipeline {
-	agent any
-  stages {
-  	stage('Maven Install') {
-    	agent {
-      	docker {
-        	image 'maven:3.5.0'
-        }
-      }
-      steps {
-      	sh 'mvn clean install'
-      }
-    }
+    agent any
+      stages {
+          stage('build'){
+              steps{
+                  script{
+                    echo "Build the image"
+                    sh '''
+                     #!/bin/sh
 
-  }
+for i in $(seq 1 30)
+do
+    docker info
+    if [[ $? -eq 0 ]]
+    then
+        exit 0
+    fi
+
+    sleep 1s
+done
+
+                    '''
+
+                  }
+              }
+          }
+      }
+       /*** workspace clean up*/
+  post {
+    always {
+      cleanWs()
+    }
+  }  
 }
