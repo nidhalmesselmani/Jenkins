@@ -3,12 +3,14 @@ pipeline {
       stages {
           stage('build'){
               steps{
-                    sh 'sleep 10'
+                  script{
                     echo "Build the image"
-                    sh 'ls /certs/client'
-                    sh 'docker'
+                    sh '''
+                    sleep 3
+                    docker
+                    '''
 
-                  
+                  }
               }
           }
       }
