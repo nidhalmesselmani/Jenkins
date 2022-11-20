@@ -1,10 +1,11 @@
 FROM gcc:latest
 
-WORKDIR /usr/test/build
+
 
 RUN pwd
+
 COPY . /usr/test/build/
 
-
+WORKDIR /usr/test/build
 
 CMD ["./HelloAppBinary"]
