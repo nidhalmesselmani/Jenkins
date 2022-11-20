@@ -1,3 +1,5 @@
 FROM gcc:latest
 
 WORKDIR  "/home/workspace/docker_build_cpp_app/my_cpp_app/source/build"
+
+RUN cmake -G"Unix Makefiles"  -D CMAKE_CXX_COMPILER=g++ ../source/
