@@ -59,6 +59,7 @@ pipeline {
 
                 '''
             }
+        }
     }
  /*** workspace clean up*/
   post {
