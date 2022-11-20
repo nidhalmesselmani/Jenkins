@@ -5,4 +5,5 @@ WORKDIR /usr/test/build
 COPY my_cpp_app/build/  /usr/test/build/
 
 
+
 CMD ["./HelloAppBinary"]
