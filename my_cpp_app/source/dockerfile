@@ -3,4 +3,3 @@ FROM gcc:latest
 WORKDIR  "/home/workspace/docker_build_cpp_app/my_cpp_app/source"
 RUN if [[ ! -d "build" ]]; then mkdir build; fi
 WORKDIR  "/home/workspace/docker_build_cpp_app/my_cpp_app/source/build"
-RUN ls
