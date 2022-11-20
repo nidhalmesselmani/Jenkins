@@ -9,7 +9,7 @@ pipeline {
             steps {
                 echo 'Building the image'
                 script {
-                  dcoker.build nidhamesselmani/my_docker_repo
+                  docker.build nidhamesselmani/my_docker_repo
                 }
                /* sh '''
                 cd my_cpp_app/source
@@ -21,7 +21,7 @@ pipeline {
           steps{
             echo 'RUNNING the container'
             sh '''
-            docker run --name cpp_k8s --rm nidhamesselmani/my_docker_repo:cpp_to_k8s > runlog.txt
+            docker run --name cpp_k8s --rm nidhamesselmani/my_docker_repo > runlog.txt
             cat runlog.txt
             '''
           }
