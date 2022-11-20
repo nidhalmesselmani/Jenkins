@@ -18,7 +18,7 @@ pipeline {
           steps{
             echo 'RUNNING the container'
             sh '''
-            docker run -it --name cpp_k8s --rm applictation_cpp_to_deploy_to_k8s
+            docker run --name cpp_k8s --rm applictation_cpp_to_deploy_to_k8s
             '''
           }
         }
