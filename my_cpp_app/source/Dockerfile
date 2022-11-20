@@ -1,13 +1,10 @@
 FROM gcc:latest
 
 
+COPY . /usr/src/cpp_app
 
-#COPY . /usr/test/build/
+WORKDIR /usr/src/cpp_app
 
-#WORKDIR /usr/test/build
+RUN g++ -o Test main.cpp
 
-#RUN ls -la /usr/test/build
-
-RUN ls -la .
-
-CMD ["./HelloAppBinary"]
+CMD ["./Test"]
