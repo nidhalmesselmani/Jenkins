@@ -1,6 +1,6 @@
 pipeline {
     environment{
-      dockerimagename = "nidhalmesselmani/my_docker_repo"
+      dockerimagename = "nidhalmesselmani47/jenkins_agents"
       dockerimage = ""
     }
     agent { 
