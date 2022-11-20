@@ -2,10 +2,7 @@ FROM gcc:latest
 
 
 
-RUN pwd
-RUN pwd
-
-COPY . /usr/test/build/
+COPY build/ /usr/test/build/
 
 WORKDIR /usr/test/build
 
