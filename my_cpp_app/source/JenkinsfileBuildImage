@@ -7,12 +7,20 @@ pipeline {
       stages {
         stage('Build Image') {
             steps {
-                echo 'Build....'
+                echo 'Building the image'
                 sh '''
                 cd my_cpp_app/source
                 docker build -t applictation_cpp_to_deploy_to_k8s .
                 '''
             }
+        }
+        stage('Run the Image'){
+          steps{
+            echo 'RUNNING the container'
+            sh '''
+            docker run -it --name cpp_k8s --rm applictation_cpp_to_deploy_to_k8s
+            '''
+          }
         }
       }
        /*** workspace clean up*/
