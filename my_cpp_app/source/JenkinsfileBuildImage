@@ -17,10 +17,6 @@ pipeline {
                     dockerimage = docker.build dockerimagename
                   }
                 }
-               /* sh '''
-                cd my_cpp_app/source
-                docker build -t nidhamesselmani/my_docker_repo:cpp_to_k8s .
-                '''*/
             }
         }
         stage('Push the Image to dockerhub'){
@@ -36,9 +32,13 @@ pipeline {
               }
 
             }
-            /*sh '''
-              docker push nidhamesselmani/my_docker_repo:cpp_to_k8s
-            '''*/
+          }
+        }
+        stage('Deployement App to Kubernetes'){
+          steps {
+            script {
+              KubernetesDeploy(configs: "deployementservice.yml", kubeconfigId: "kubernetes")
+            }
           }
         }
       }
