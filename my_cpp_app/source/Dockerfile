@@ -8,4 +8,4 @@ RUN cmake .. -G"Unix Makefiles"  -D CMAKE_CXX_COMPILER=g++
 RUN cmake --build .
 RUN ctest
 
-RUN ls -ltr
+CMD ["./HelloAppBinary"]
