@@ -52,11 +52,11 @@ pipeline {
             }
         }
 
-        stage('Deliver') {
+        stage('Build Image') {
             steps {
                 echo 'Deliver....'
                 sh '''
-
+                docker info
                 '''
             }
         }

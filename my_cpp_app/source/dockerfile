@@ -1,5 +1,2 @@
 FROM gcc:latest
 
-WORKDIR  "/home/workspace/docker_build_cpp_app/my_cpp_app/source/build"
-RUN echo "Executing CMD"
-RUN cmake 
