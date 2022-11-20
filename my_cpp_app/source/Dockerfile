@@ -2,7 +2,7 @@ FROM gcc:latest
 
 
 
-COPY build /usr/test/build/
+COPY . /usr/test/build/
 
 WORKDIR /usr/test/build
 
