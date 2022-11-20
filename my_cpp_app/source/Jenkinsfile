@@ -52,15 +52,7 @@ pipeline {
             }
         }
 
-        stage('Build Image') {
-            steps {
-                echo 'Deliver....'
-                sh '''
-                cd my_cpp_app/source
-                docker build -t applictation_cpp_to_deploy_to_k8s .
-                '''
-            }
-        }
+
     }
  /*** workspace clean up*/
   post {

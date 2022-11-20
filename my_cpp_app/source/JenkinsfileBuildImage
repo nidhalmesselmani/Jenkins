@@ -1,22 +1,19 @@
 pipeline {
-    environment{
-      dockerImage = ""
-    }
     agent { 
         node {
             label 'docker-agent-cpp'
             }
       }
       stages {
-          stage('build'){
-              steps{
-                  script{
-                    dir('my_cpp_app/source/') {
-                      dockerImage = docker.build "nidhamesselmani/my_docker_repo"
-                    }
-                  }
-              }
-          }
+        stage('Build Image') {
+            steps {
+                echo 'Build....'
+                sh '''
+                cd my_cpp_app/source
+                docker build -t applictation_cpp_to_deploy_to_k8s .
+                '''
+            }
+        }
       }
        /*** workspace clean up*/
   post {
