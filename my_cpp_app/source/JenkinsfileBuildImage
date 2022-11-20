@@ -10,7 +10,7 @@ pipeline {
                 echo 'Building the image'
                 sh '''
                 cd my_cpp_app/source
-                docker build -t applictation_cpp_to_deploy_to_k8s .
+                docker build -t applictation_cpp_to_deploy_to_k8s:latest .
                 '''
             }
         }
@@ -18,7 +18,7 @@ pipeline {
           steps{
             echo 'RUNNING the container'
             sh '''
-            docker run --name cpp_k8s --rm applictation_cpp_to_deploy_to_k8s > runlog.txt
+            docker run --name cpp_k8s --rm applictation_cpp_to_deploy_to_k8s:latest > runlog.txt
             cat runlog.txt
             '''
           }
