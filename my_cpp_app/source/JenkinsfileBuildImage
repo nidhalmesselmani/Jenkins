@@ -9,7 +9,7 @@ pipeline {
             steps {
                 echo 'Building the image'
                 script {
-                  dcoker.build nidhamesselmani/my_docker_repo:cpp_to_k8s
+                  dcoker.build nidhamesselmani/my_docker_repo
                 }
                /* sh '''
                 cd my_cpp_app/source
