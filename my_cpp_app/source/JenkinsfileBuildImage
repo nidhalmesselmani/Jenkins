@@ -14,9 +14,7 @@ pipeline {
                 echo 'Building the image'
                 script {
                   dir("my_cpp_app/source") {
-                  sh "pwd"
-                  sh "ls"
-                  docker.build dockerimagename
+                    dockerimage = docker.build dockerimagename
                   }
                 }
                /* sh '''
@@ -25,27 +23,22 @@ pipeline {
                 '''*/
             }
         }
-        stage('Run the Image'){
-          steps{
-            echo 'RUNNING the container'
-            sh '''
-            docker run --name cpp_k8s --rm nidhamesselmani/my_docker_repo > runlog.txt
-            cat runlog.txt
-            '''
-          }
-        }
         stage('Push the Image to dockerhub'){
+          environment {
+            registryCrendential = 'dockerhublogin'
+          }
           steps{
             echo 'Push the image to dockerhub'
             script{
-              docker.withRegistry('https://hub.docker.com/repository/docker/nidhamesselmani/my_docker_repo', 'dockerhublogin'){
+              docker.withRegistry('https://registry.hub.docker.com/', registryCrendential){
+              dockerimage.push('cpp_to_k8s')
 
               }
 
             }
-            sh '''
+            /*sh '''
               docker push nidhamesselmani/my_docker_repo:cpp_to_k8s
-            '''
+            '''*/
           }
         }
       }
