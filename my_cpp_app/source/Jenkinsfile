@@ -57,7 +57,7 @@ pipeline {
                 echo 'Deliver....'
                 sh '''
                 cd my_cpp_app/source
-                docker build -t applictation_app_to_deploy .
+                docker build -t applictation_cpp_to_deploy_to_k8s .
                 '''
             }
         }
