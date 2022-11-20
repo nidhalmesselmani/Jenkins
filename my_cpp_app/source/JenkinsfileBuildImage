@@ -1,4 +1,7 @@
 pipeline {
+    environment{
+      dockerimagename = "nidhalmesselmani/my_docker_repo"
+    }
     agent { 
         node {
             label 'docker-agent-cpp'
@@ -9,7 +12,7 @@ pipeline {
             steps {
                 echo 'Building the image'
                 script {
-                  docker.build nidhamesselmani/my_docker_repo
+                  docker.build dockerimagename
                 }
                /* sh '''
                 cd my_cpp_app/source
