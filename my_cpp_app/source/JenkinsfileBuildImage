@@ -8,10 +8,13 @@ pipeline {
         stage('Build Image') {
             steps {
                 echo 'Building the image'
-                sh '''
+                script {
+                  dcoker.build nidhamesselmani/my_docker_repo:cpp_to_k8s
+                }
+               /* sh '''
                 cd my_cpp_app/source
                 docker build -t nidhamesselmani/my_docker_repo:cpp_to_k8s .
-                '''
+                '''*/
             }
         }
         stage('Run the Image'){
@@ -26,6 +29,12 @@ pipeline {
         stage('Push the Image to dockerhub'){
           steps{
             echo 'Push the image to dockerhub'
+            script{
+              docker.withRegistry('https://hub.docker.com/repository/docker/nidhamesselmani/my_docker_repo', 'dockerhublogin'){
+
+              }
+
+            }
             sh '''
               docker push nidhamesselmani/my_docker_repo:cpp_to_k8s
             '''
