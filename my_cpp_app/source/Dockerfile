@@ -1,4 +1,4 @@
-FROM nidhamesselmani/my_docker_repo:cpp_jenkins_agent
+FROM nidhamesselmani47/jenkins_agents:cpp_jenkins_agent
 
 
 COPY . /usr/cpp_app/

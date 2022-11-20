@@ -30,7 +30,7 @@ pipeline {
           steps{
             echo 'Push the image to dockerhub'
             script{
-              docker.withRegistry('https://hub.docker.com/', registryCrendential){
+              docker.withRegistry('https://registry.hub.docker.com/', registryCrendential){
               dockerimage.push('cpp_to_k8s')
 
               }
