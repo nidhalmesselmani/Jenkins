@@ -1,10 +1,3 @@
-FROM gcc:latest
+FROM nidhamesselmani/my_docker_repo:cpp_jenkins_agent
 
-
-COPY . /usr/src/cpp_app
-
-WORKDIR /usr/src/cpp_app
-
-RUN g++ -o Test main.cpp
-
-CMD ["./Test"]
+RUN cmake
