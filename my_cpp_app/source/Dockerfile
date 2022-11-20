@@ -2,7 +2,7 @@ FROM gcc:latest
 
 WORKDIR /usr/test/build
 
-COPY my_cpp_app/build/  /usr/test/build/
+COPY /home/jenkins/workspace/Pipeline_my_first_cpp_build_pipeline/my_cpp_app/build/ /usr/test/build/
 
 
 
