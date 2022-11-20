@@ -38,7 +38,9 @@ pipeline {
         stage('Deployement App to Kubernetes'){
           steps {
             script {
-              kubernetesDeploy(configs: "deployementservice.yml", kubeconfigId: "kubernetes")
+              dir("my_cpp_app/source") {
+                kubernetesDeploy(configs: "deployementservice.yml", kubeconfigId: "kubernetes")
+              }
             }
           }
         }
