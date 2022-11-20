@@ -3,6 +3,7 @@ FROM gcc:latest
 
 
 RUN pwd
+RUN pwd
 
 COPY . /usr/test/build/
 
