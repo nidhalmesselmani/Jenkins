@@ -15,6 +15,7 @@ pipeline {
                 script {
                   dir("my_cpp_app/source") {
                   sh "pwd"
+                  sh "ls"
                   //docker.build dockerimagename
                   }
                 }
