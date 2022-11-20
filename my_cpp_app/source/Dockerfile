@@ -8,6 +8,6 @@ FROM gcc:latest
 
 #RUN ls -la /usr/test/build
 
-RUN ls -la /home/jenkins/workspace/Pipeline_my_first_cpp_build_pipeline/my_cpp_app/build
+RUN ls -la .
 
 CMD ["./HelloAppBinary"]
