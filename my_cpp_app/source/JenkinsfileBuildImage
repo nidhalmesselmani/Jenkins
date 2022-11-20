@@ -34,14 +34,14 @@ pipeline {
 
             }
           }
-        }
+        }*/
         stage('Deployement App to Kubernetes'){
           steps {
             script {
               kubernetesDeploy(configs: "deployementservice.yml", kubeconfigId: "kubernetes")
             }
           }
-        }*/
+        }
       }
        /*** workspace clean up*/
   post {
