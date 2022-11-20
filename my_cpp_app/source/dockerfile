@@ -2,4 +2,5 @@ FROM gcc:latest
 
 RUN bash
 RUN if [[ ! -d "build" ]]; then mkdir build; fi
-RUN cd "/home/workspace/docker_build_cpp_app/my_cpp_app/source"
+WORKDIR  "/home/workspace/docker_build_cpp_app/my_cpp_app/source"
+RUN ls
