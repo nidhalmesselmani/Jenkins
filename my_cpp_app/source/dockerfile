@@ -1,4 +1,5 @@
 FROM gcc:latest
 
 RUN bash
-RUN if [[ ! -d "build" ]]; then mkdir build; fi
+RUN if [[ ! -d "build" ]]; then mkdir build && cd build ; fi
+RUN pwd
