@@ -1,2 +1,4 @@
 FROM gcc:latest
 
+WORKDIR /home/jenkins/workspace/Pipeline my_first_cpp_build_pipeline
+RUN ls 
