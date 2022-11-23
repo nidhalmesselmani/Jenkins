@@ -36,3 +36,5 @@ tasks.json
 *build
 *.vscode/c_cpp_properties.json*
 *.vs
+env
+__pycache__
